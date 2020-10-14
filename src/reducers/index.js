@@ -1,16 +1,15 @@
 import { ADD_MOVIES, ADD_FAVOURITES, UN_FAVOURITES, SHOW_FAVOURITES } from '../actions';
 
 
-const initialState = {
+// Movie reducer
+const initialMovieState = {
     list: [],
     favourites: [],
     showFavourites: false
-}
-
-
+};
 
 // return state
-export default function movies(state=initialState, action){
+export function movies(state=initialMovieState, action){
     switch(action.type){
         case ADD_MOVIES:
             return {
@@ -40,5 +39,29 @@ export default function movies(state=initialState, action){
 
         default:
             return state;
+    }
+}
+
+// Search reducer
+const initialSearchState = {
+    results: {}
+};
+
+export function search(state=initialSearchState, action){
+    return state;
+}
+
+
+
+// Root reducer
+const initialRootState = {
+    movies: initialMovieState,
+    search: initialSearchState
+}
+
+export default function rootReducer(state=initialRootState, action){
+    return {
+        movies: movies(state.movies, action),
+        search: search(state.search, action)
     }
 }
