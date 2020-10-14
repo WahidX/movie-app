@@ -11,6 +11,7 @@
 export const ADD_MOVIES = 'ADD_MOVIES';
 export const ADD_FAVOURITES = 'ADD_FAVOURITES';
 export const UN_FAVOURITES = 'UN_FAVOURITES';
+export const SHOW_FAVOURITES = 'SHOW_FAVOURITES';
 
 // action creators
 export function addMovies(movies){
@@ -31,5 +32,12 @@ export function unFavourite(movie){
     return{
         type: UN_FAVOURITES,
         movie,
+    }
+}
+
+export function setShowFavourites(value){
+    return{
+        type: SHOW_FAVOURITES,
+        value,
     }
 }
